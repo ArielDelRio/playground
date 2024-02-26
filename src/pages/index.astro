@@ -1,11 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting";
 ---
 
-<Layout title="Astro">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-
-  <h1 class="pt-10 text-6xl text-center font-bold">Hello Astro</h1>
-</Layout>
+<BaseLayout title="Astro">
+  <h2 class="pt-10 text-6xl text-center font-bold">My awesome blog subtitle</h2>
+  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+</BaseLayout>

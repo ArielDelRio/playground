@@ -1,4 +1,7 @@
 ---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 interface Props {
   title: string;
 }
@@ -16,17 +19,14 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
+  <Header />
   <body class="bg-gray-900 min-h-screen pb-32">
     <main class="max-2-5xl px-4 m-auto">
       <slot />
     </main>
+    <script>
+      import "../scripts/menu.js";
+    </script>
   </body>
+  <Footer />
 </html>
-<style is:global>
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
-    color-scheme: dark light;
-  }
-</style>
