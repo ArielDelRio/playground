@@ -1,9 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Greeting from "../components/Greeting";
+
+const Title = "My Web";
 ---
 
-<BaseLayout title="Astro">
-  <h2 class="pt-10 text-6xl text-center font-bold">My awesome blog subtitle</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-</BaseLayout>
+<BaseLayout title={Title} />

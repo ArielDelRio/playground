@@ -1,0 +1,21 @@
+---
+import Navbar from "../../components/Navbar/Navbar.astro";
+import Brand from "../../components/Brand/Brand.astro";
+import SearchInput from "../../components/Inputs/Search/Search.input.astro";
+import Link from "../../components/Link/Link.astro";
+
+const links = [
+  { href: "/resources", text: "Resources" },
+  { href: "/blog", text: "Blog" },
+];
+---
+
+<header>
+  <Navbar>
+    <Brand slot="home" />
+    <SearchInput slot="search" />
+    <div slot="links" class="w-full flex gap-5">
+      {links.map((link) => <Link href={link.href} text={link.text} />)}
+    </div>
+  </Navbar>
+</header>
