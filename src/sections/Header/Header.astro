@@ -14,7 +14,7 @@ const links = [
   <Navbar>
     <Brand slot="home" />
     <SearchInput slot="search" />
-    <div slot="links" class="w-full flex gap-5">
+    <div slot="links" class="flex w-full gap-5">
       {links.map((link) => <Link href={link.href} text={link.text} />)}
     </div>
   </Navbar>
