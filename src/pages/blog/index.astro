@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard/PostCard.astro";
 
 const title = "Blog";
 
@@ -9,14 +10,14 @@ console.log({ posts });
 ---
 
 <BaseLayout title={title}>
-  <div class="homepage">
+  <div>
     <div>
       <h1 class="text-5xl font-bold">Content Collection Overview</h1>
     </div>
-    <div class="post-wrapper">
-      <h2 class="text-nowrap bg-slate-50 text-3xl font-bold">Posts</h2>
-      <div>
-        {posts.map((post) => post.data.title)}
+    <div>
+      <h2 class="text-3xl font-bold">Posts</h2>
+      <div class="flex gap-3">
+        {posts.map((post) => <PostCard post={post} />)}
       </div>
     </div>
   </div>

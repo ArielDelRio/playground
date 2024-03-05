@@ -1,0 +1,76 @@
+---
+import MarkdownWrapper from "../../layouts/MarkdownWrapper.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import { getEntries } from "astro:content";
+import PostCard from "../../components/PostCard/PostCard.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { data: authorData } = await getEntry("team", post.data.author.id);
+
+const relatedPosts = post.data.relatedPosts
+  ? await getEntries(post.data.relatedPosts)
+  : [];
+---
+
+<MarkdownWrapper frontmatter={post.data}>
+  <div>
+    <Image
+      class={"rounded-lg overflow-hidden mr-2 inline-block"}
+      src={authorData.headshot}
+      alt={authorData.name}
+      width={"20"}
+      height={"20"}
+    />
+    <span class="text-sm text-gray-600 dark:text-gray-400">
+      By {authorData.name}
+    </span>
+    <span class="text-sm text-gray-600 dark:text-gray-400">•</span>
+    <time
+      class="text-sm text-gray-600 dark:text-gray-400"
+      datetime={post.data.date.toISOString()}
+    >
+      {
+        post.data.date.toLocaleDateString("en-US", {
+          timeZone: "UTC",
+          dateStyle: "medium",
+        })
+      }
+    </time>
+  </div>
+  <Content />
+  {
+    relatedPosts.length > 0 && (
+      <div>
+        <h2>Related Posts</h2>
+        <ul>
+          {relatedPosts.map((relatedPost) => (
+            <li>
+              <PostCard post={relatedPost} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</MarkdownWrapper>
