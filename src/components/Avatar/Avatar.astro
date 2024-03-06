@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  src: {
+    src: string;
+    width: number;
+    height: number;
+    format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  };
+  alt?: string;
+  size?: string;
+};
+
+const { src, alt = "Avatar", size = "w-16 h-16" } = Astro.props;
+---
+
+<div
+  class={`${size} rounded-full overflow-hidden border-2 border-gray-600 dark:border-gray-300 shadow-sm`}
+>
+  <Image src={src} alt={alt} width={64} height={64} loading="lazy" />
+</div>

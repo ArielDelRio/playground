@@ -2,7 +2,7 @@
 title: "My First Blog Post"
 description: "This is the first post of my new Astro blog."
 date: 2024-03-04
-author: carol-whitt
+author: arieldrio
 relatedPosts: ["post-2"]
 ---
 
@@ -21,3 +21,21 @@ Welcome to my _new blog_ about learning Astro! Here, I will share my learning jo
 ## What's next
 
 I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
+
+To install the package, run `npm install package-name`.
+
+````javascript
+function sayHello() {
+  console.log('Hello, world!');
+}
+
+
+
+(Note: Remove the extra indentation from the triple backticks in your actual Markdown file; it's used here to escape the code block within another code block.)
+
+### No Language Specific
+
+If you don't want to specify the programming language or if the code doesn't belong to a specific programming language, just use the triple backticks without adding a language name.
+
+```markdown
+````

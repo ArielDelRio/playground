@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { getEntries } from "astro:content";
 import PostCard from "../../components/PostCard/PostCard.astro";
+import Avatar from "../../components/Avatar/Avatar.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -34,14 +35,8 @@ const relatedPosts = post.data.relatedPosts
 ---
 
 <MarkdownWrapper frontmatter={post.data}>
-  <div>
-    <Image
-      class={"rounded-lg overflow-hidden mr-2 inline-block"}
-      src={authorData.headshot}
-      alt={authorData.name}
-      width={"20"}
-      height={"20"}
-    />
+  <div class="my-2 flex items-center gap-2">
+    <Avatar src={authorData.headshot} alt={authorData.name} size="w-12 h-12" />
     <span class="text-sm text-gray-600 dark:text-gray-400">
       By {authorData.name}
     </span>
@@ -58,7 +53,7 @@ const relatedPosts = post.data.relatedPosts
       }
     </time>
   </div>
-  <Content />
+  <Content slot="content" />
   {
     relatedPosts.length > 0 && (
       <div>
