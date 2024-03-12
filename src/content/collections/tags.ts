@@ -5,5 +5,6 @@ export default defineCollection({
   schema: () =>
     z.object({
       name: z.string(),
+      color: z.string(),
     }),
 });

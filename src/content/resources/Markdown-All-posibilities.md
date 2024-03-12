@@ -3,237 +3,197 @@ title: "Markdown: All Possibilities"
 description: "A comprehensive guide on using Markdown, including headings, paragraphs, text formatting, lists, links, images, code, tables, blockquotes, horizontal rule, and escaping characters."
 author: arieldrio
 date: 2024-03-04
+tags: ["astro"]
 ---
 
-**Advertisement :)**
+# Dillinger
 
-- **[pica](https://nodeca.github.io/pica/demo/)** - high quality and fast image
-  resize in browser.
-- **[babelfish](https://github.com/nodeca/babelfish/)** - developer friendly
-  i18n with plurals support and easy syntax.
+## _The Last Markdown Editor, Ever_
 
-You will like those projects!
+[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
----
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-# h1 Heading 8-)
+Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
+AngularJS-powered HTML5 Markdown editor.
 
-## h2 Heading
+- Type some Markdown on the left
+- See HTML in the right
+- ✨Magic ✨
 
-### h3 Heading
+## Features
 
-#### h4 Heading
+- Import a HTML file and watch it magically convert to Markdown
+- Drag and drop images (requires your Dropbox account be linked)
+- Import and save files from GitHub, Dropbox, Google Drive and One Drive
+- Drag and drop markdown and HTML files into Dillinger
+- Export documents as Markdown, HTML and PDF
 
-##### h5 Heading
+Markdown is a lightweight markup language based on the formatting conventions
+that people naturally use in email.
+As [John Gruber] writes on the [Markdown site][df1]
 
-###### h6 Heading
+> The overriding design goal for Markdown's
+> formatting syntax is to make it as readable
+> as possible. The idea is that a
+> Markdown-formatted document should be
+> publishable as-is, as plain text, without
+> looking like it's been marked up with tags
+> or formatting instructions.
 
-## Horizontal Rules
+This text you see here is \*actually- written in Markdown! To get a feel
+for Markdown's syntax, type some text into the left window and
+watch the results in the right.
 
----
+## Tech
 
----
+Dillinger uses a number of open source projects to work properly:
 
----
+- [AngularJS] - HTML enhanced for web apps!
+- [Ace Editor] - awesome web-based text editor
+- [markdown-it] - Markdown parser done right. Fast and easy to extend.
+- [Twitter Bootstrap] - great UI boilerplate for modern web apps
+- [node.js] - evented I/O for the backend
+- [Express] - fast node.js network app framework [@tjholowaychuk]
+- [Gulp] - the streaming build system
+- [Breakdance](https://breakdance.github.io/breakdance/) - HTML
+  to Markdown converter
+- [jQuery] - duh
 
-## Typographic replacements
+And of course Dillinger itself is open source with a [public repository][dill]
+on GitHub.
 
-Enable typographer option to see result.
+## Installation
 
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
 
-test.. test... test..... test?..... test!....
+Install the dependencies and devDependencies and start the server.
 
-!!!!!! ???? ,, -- ---
-
-"Smartypants, double quotes" and 'single quotes'
-
-## Emphasis
-
-**This is bold text**
-
-**This is bold text**
-
-_This is italic text_
-
-_This is italic text_
-
-~~Strikethrough~~
-
-## Blockquotes
-
-> Blockquotes can also be nested...
->
-> > ...by using additional greater-than signs right next to each other...
-> >
-> > > ...or with spaces between arrows.
-
-## Lists
-
-Unordered
-
-- Create a list by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    - Ac tristique libero volutpat at
-    * Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-- Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
-
-```
-Sample text here...
+```sh
+cd dillinger
+npm i
+node app
 ```
 
-Syntax highlighting
+For production environments...
 
-```js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
+```sh
+npm install --production
+NODE_ENV=production node app
 ```
-
-## Tables
-
-| Option | Description                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
-
-Right aligned columns
-
-| Option |                                                               Description |
-| -----: | ------------------------------------------------------------------------: |
-|   data | path to data files to supply the data that will be passed into templates. |
-| engine |    engine to be used for processing templates. Handlebars is the default. |
-|    ext |                                      extension to be used for dest files. |
-
-## Links
-
-[link text](http://dev.nodeca.com)
-
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
-
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
-
-## Images
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"
 
 ## Plugins
 
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+Dillinger is currently extended with the following plugins.
+Instructions on how to use them in your own application are linked below.
 
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+| Plugin           | README                                    |
+| ---------------- | ----------------------------------------- |
+| Dropbox          | [plugins/dropbox/README.md][PlDb]         |
+| GitHub           | [plugins/github/README.md][PlGh]          |
+| Google Drive     | [plugins/googledrive/README.md][PlGd]     |
+| OneDrive         | [plugins/onedrive/README.md][PlOd]        |
+| Medium           | [plugins/medium/README.md][PlMe]          |
+| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
 
-> Classic markup: :wink: :cry: :laughing: :yum:
->
-> Shortcuts (emoticons): :-) :-( 8-) ;)
+## Development
 
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+Want to contribute? Great!
 
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+Dillinger uses Gulp + Webpack for fast developing.
+Make a change in your file and instantaneously see your updates!
 
-- 19^th^
-- H~2~O
+Open your favorite Terminal and run these commands.
 
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+First Tab:
 
-++Inserted text++
+```sh
+node app
+```
 
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+Second Tab:
 
-==Marked text==
+```sh
+gulp watch
+```
 
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+(optional) Third:
 
-Footnote 1 link[^first].
+```sh
+karma test
+```
 
-Footnote 2 link[^second].
+#### Building for source
 
-Inline footnote^[Text of inline footnote] definition.
+For production release:
 
-Duplicated footnote reference[^second].
+```sh
+gulp build --prod
+```
 
-[^first]: Footnote **can have markup**
+Generating pre-built zip archives for distribution:
 
-    and multiple paragraphs.
+```sh
+gulp build dist --prod
+```
 
-[^second]: Footnote text.
+## Docker
 
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+Dillinger is very easy to install and deploy in a Docker container.
 
-Term 1
+By default, the Docker will expose port 8080, so change this within the
+Dockerfile if necessary. When ready, simply use the Dockerfile to
+build the image.
 
-: Definition 1
-with lazy continuation.
+```sh
+cd dillinger
+docker build -t <youruser>/dillinger:${package.json.version} .
+```
 
-Term 2 with _inline markup_
+This will create the dillinger image and pull in the necessary dependencies.
+Be sure to swap out `${package.json.version}` with the actual
+version of Dillinger.
 
-: Definition 2
+Once done, run the Docker image and map the port to whatever you wish on
+your host. In this example, we simply map port 8000 of the host to
+port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
 
-        { some code, part of Definition 2 }
+```sh
+docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=dillinger <youruser>/dillinger:${package.json.version}
+```
 
-    Third paragraph of definition 2.
+> Note: `--capt-add=SYS-ADMIN` is required for PDF rendering.
 
-_Compact style:_
+Verify the deployment by navigating to your server address in
+your preferred browser.
 
-Term 1
-~ Definition 1
+```sh
+127.0.0.1:8000
+```
 
-Term 2
-~ Definition 2a
-~ Definition 2b
+## License
 
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+MIT
 
-This is HTML abbreviation example.
+**Free Software, Hell Yeah!**
 
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
-
-\*[HTML]: Hyper Text Markup Language
-
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
-
-::: warning
-_here be dragons_
-:::
+[//]: # "These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax"
+[dill]: https://github.com/joemccann/dillinger
+[git-repo-url]: https://github.com/joemccann/dillinger.git
+[john gruber]: http://daringfireball.net
+[df1]: http://daringfireball.net/projects/markdown/
+[markdown-it]: https://github.com/markdown-it/markdown-it
+[Ace Editor]: http://ace.ajax.org
+[node.js]: http://nodejs.org
+[Twitter Bootstrap]: http://twitter.github.com/bootstrap/
+[jQuery]: http://jquery.com
+[@tjholowaychuk]: http://twitter.com/tjholowaychuk
+[express]: http://expressjs.com
+[AngularJS]: http://angularjs.org
+[Gulp]: http://gulpjs.com
+[PlDb]: https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md
+[PlGh]: https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md
+[PlGd]: https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md
+[PlOd]: https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md
+[PlMe]: https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md
+[PlGa]: https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md

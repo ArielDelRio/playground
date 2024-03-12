@@ -3,9 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import MarkdownWrapper from "../../layouts/MarkdownWrapper.astro";
-import Avatar from "../../components/Avatar/Avatar.astro";
-import { Image } from "astro:assets";
-import Prose from "../../components/Prose/Prose.astro";
+import { getEntries } from "astro:content";
 
 export async function getStaticPaths() {
   const resources = await getCollection("resources");
@@ -27,26 +25,37 @@ type Props = {
 const { resource } = Astro.props;
 const { Content } = await resource.render();
 const { data: authorData } = await getEntry("team", resource.data.author.id);
+const tags = await getEntries(resource.data.tags || []);
 ---
 
 <MarkdownWrapper frontmatter={resource.data}>
-  <div class="my-2 flex items-center gap-2">
-    <Avatar src={authorData.headshot} alt={authorData.name} size="w-12 h-12" />
-    <span class="text-sm text-gray-600 dark:text-gray-400">
-      By {authorData.name}
-    </span>
-    <span class="text-sm text-gray-600 dark:text-gray-400">•</span>
-    <time
-      class="text-sm text-gray-600 dark:text-gray-400"
-      datetime={resource.data.date.toISOString()}
-    >
-      {
-        resource.data.date.toLocaleDateString("en-US", {
-          timeZone: "UTC",
-          dateStyle: "medium",
-        })
-      }
-    </time>
+  <div slot="header" class="mb-10">
+    <h1 class="text-4xl font-medium">{resource.data.title}</h1>
+    <div class="flex items-center space-x-2 text-gray-500">
+      <time
+        class="text-sm text-gray-600 dark:text-gray-400"
+        datetime={resource.data.date.toISOString()}
+      >
+        {
+          resource.data.date.toLocaleDateString("en-US", {
+            timeZone: "UTC",
+            dateStyle: "medium",
+          })
+        }
+      </time>
+      <div class="flex items-center space-x-2">
+        {
+          tags.map((tag) => (
+            <span
+              class="rounded-md px-2 py-1 text-xs font-medium text-white"
+              style={{ backgroundColor: tag.data.color }}
+            >
+              {tag.data.name}
+            </span>
+          ))
+        }
+      </div>
+    </div>
   </div>
   <Content slot="content" />
 </MarkdownWrapper>
