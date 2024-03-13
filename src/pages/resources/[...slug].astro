@@ -4,6 +4,7 @@ import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import MarkdownWrapper from "../../layouts/MarkdownWrapper.astro";
 import { getEntries } from "astro:content";
+import { Tag } from "components";
 
 export async function getStaticPaths() {
   const resources = await getCollection("resources");
@@ -44,16 +45,7 @@ const tags = await getEntries(resource.data.tags || []);
         }
       </time>
       <div class="flex items-center space-x-2">
-        {
-          tags.map((tag) => (
-            <span
-              class="rounded-md px-2 py-1 text-xs font-medium text-white"
-              style={{ backgroundColor: tag.data.color }}
-            >
-              {tag.data.name}
-            </span>
-          ))
-        }
+        {tags.map((tag) => <Tag tag={tag} />)}
       </div>
     </div>
   </div>

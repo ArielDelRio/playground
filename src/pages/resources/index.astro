@@ -1,7 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PostCard from "../../components/PostCard/PostCard.astro";
+import { Card } from "components";
+import { GridLayout } from "layouts";
+import { Square, QueueList } from "icons";
 
 const title = "Resources";
 
@@ -10,9 +12,39 @@ const resources = await getCollection("resources");
 
 <BaseLayout title={title}>
   <div>
-    <h2 class="text-3xl font-bold">Posts</h2>
-    <div class="flex gap-3">
-      {resources.map((resource) => <PostCard post={resource} />)}
+    <div class="flex justify-between">
+      <h2 class="text-3xl font-bold">Resources</h2>
+      <button class="change-view-btn">
+        <div class="icon active">
+          <QueueList />
+        </div>
+        <div class="icon hidden">
+          <Square />
+        </div>
+      </button>
     </div>
+    <GridLayout type="grid">
+      {resources.map((resource) => <Card post={resource} />)}
+    </GridLayout>
   </div>
 </BaseLayout>
+
+<script>
+  const changeViewBtn = document.querySelector(".change-view-btn")!;
+  const icons = document.querySelectorAll(".icon");
+  const dynamicLayout = document.querySelector("#grid-layout")!;
+
+  console.log({ dynamicLayout });
+
+  changeViewBtn.addEventListener("click", () => {
+    icons.forEach((icon) => {
+      icon.classList.toggle("hidden");
+      icon.classList.toggle("active");
+    });
+
+    console.log(dynamicLayout.getAttribute("type") === "grid");
+    dynamicLayout.getAttribute("type") === "grid"
+      ? dynamicLayout.setAttribute("type", "list")
+      : dynamicLayout.setAttribute("type", "grid");
+  });
+</script>

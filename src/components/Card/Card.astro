@@ -11,8 +11,6 @@ type Props = {
 const { post } = Astro.props;
 const { author, description, title, date } = post.data;
 
-const { data: authorData } = await getEntry("team", author.id);
-
 const entryType = post.collection;
 ---
 
@@ -24,15 +22,6 @@ const entryType = post.collection;
       {title}
     </h2>
     <div class="my-2 flex items-center gap-2">
-      <Avatar
-        src={authorData.headshot}
-        alt={authorData.name}
-        size="w-12 h-12"
-      />
-      <span class="text-sm text-gray-600 dark:text-gray-400">
-        By {authorData.name}
-      </span>
-      <span class="text-sm text-gray-600 dark:text-gray-400">•</span>
       <time
         class="text-sm text-gray-600 dark:text-gray-400"
         datetime={date.toISOString()}
