@@ -1,0 +1,61 @@
+---
+import { QueueList, Square } from "icons";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="flex justify-between">
+  <h2 class="text-3xl font-bold">{title}</h2>
+  <button class="change-view-btn">
+    <div id="gridIcon" class="icon active">
+      <QueueList />
+    </div>
+    <div id="listIcon" class="icon hidden">
+      <Square />
+    </div>
+  </button>
+</div>
+
+<div id="contentGrid">
+  <div
+    class="container mx-auto grid gap-8 pt-6 transition-all sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  >
+    <slot />
+  </div>
+</div>
+
+<div id="contentList" class="hidden">
+  <div class="flex flex-col gap-8 pt-6 transition-all">
+    <slot />
+  </div>
+</div>
+
+<script>
+  const changeViewBtns = document.querySelectorAll(".change-view-btn");
+  const grid = document.getElementById("contentGrid");
+  const list = document.getElementById("contentList");
+  const gridIcon = document.getElementById("gridIcon");
+  const listIcon = document.getElementById("listIcon");
+
+  const handleClick = () => {
+    console.log("clicked");
+  };
+
+  console.log("DOMContentLoaded");
+
+  changeViewBtns.forEach((btn) => {
+    btn.addEventListener("click", handleClick);
+  });
+
+  // btn.addEventListener("click", function () {
+  //   console.log("clicked");
+  //   grid.classList.toggle("hidden");
+  //   list.classList.toggle("hidden");
+  //   gridIcon.classList.toggle("hidden");
+  //   listIcon.classList.toggle("hidden");
+  // });
+</script>

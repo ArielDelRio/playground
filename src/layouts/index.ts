@@ -1,1 +1,1 @@
-export { default as GridLayout } from "./GridLayout.astro";
+export { default as GridOrListLayout } from "./GridOrListLayout.astro";

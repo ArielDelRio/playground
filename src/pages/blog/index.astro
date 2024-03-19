@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Card } from "components";
-import { GridLayout } from "layouts";
+import { GridOrListLayout } from "layouts";
 
 const title = "Blog";
 
@@ -10,10 +10,7 @@ const posts = await getCollection("posts");
 ---
 
 <BaseLayout title={title}>
-  <div>
-    <h2 class="text-3xl font-bold">Posts</h2>
-    <GridLayout>
-      {posts.map((post) => <Card post={post} />)}
-    </GridLayout>
-  </div>
+  <GridOrListLayout title="Posts">
+    {posts.map((post) => <Card post={post} />)}
+  </GridOrListLayout>
 </BaseLayout>
