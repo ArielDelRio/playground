@@ -7,6 +7,10 @@ import { GridOrListLayout } from "layouts";
 const title = "Resources";
 
 const resources = await getCollection("resources");
+
+resources.sort((a, b) => {
+  return Number(new Date(b.data.date)) - Number(new Date(a.data.date));
+});
 ---
 
 <BaseLayout title={title}>
